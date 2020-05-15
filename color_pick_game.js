@@ -24,6 +24,26 @@ function goalColorPicker(){
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
+function setupSquares(){
+    //Applying colors and listener to squares
+    for(let i = 0; i < squares.length; i++){
+        if(colors[i]){
+            //adding initial color to squares
+            squares[i].style.backgroundColor = colors[i];
+    
+            //adding listeners to squares
+            squares[i].addEventListener("click", colorClicked);
+
+            //Makes shure that all squares are shown
+            squares[i].style.display = "block";
+        }
+        else{
+            //Hides unused squares
+            squares[i].style.display = "none";
+        }
+    }
+}
+
 function colorClicked(){
     //Function called when clicking on a square
     if(this.style.backgroundColor === goal_color){
@@ -38,6 +58,7 @@ function colorClicked(){
 function colorCorrect(){
     //Function called when correct square is selected
     message_display.textContent = "Correct"
+    replay_button.textContent = "PLAY AGAIN?"
     top_container.style.backgroundColor = goal_color;
 
     for(let i = 0; i < squares.length; i++){
@@ -48,27 +69,66 @@ function colorCorrect(){
 function colorIncorrect(square){
     //Function called when correct square is selected
     message_display.textContent = "Try Again";
-    square.style.backgroundColor = "black";
+    square.style.backgroundColor = default_background_color;
+}
+
+function resetGame(){
+    colors = generateColors(num_of_colors);
+    goal_color = goalColorPicker();
+
+    setupSquares();
+
+    //Displays the rgb string in the title for guessing
+    color_display.textContent = goal_color;
+
+    //reset background color to default
+    top_container.style.backgroundColor = default_background_color;
+}
+
+function easyGame(){
+    //Start an easy Mode Game
+    easy_button.classList.add("selected");
+    hard_button.classList.remove("selected");
+    
+    num_of_colors = 3;
+    resetGame();
+}
+
+function hardGame(){
+    //Start an easy Mode Game
+    hard_button.classList.add("selected");
+    easy_button.classList.remove("selected");
+
+    num_of_colors = 6;
+    resetGame();
 }
 
 //First Initialization
-colors = generateColors(6);
-
-console.log(colors);
+let num_of_colors = 6;
+let colors = generateColors(num_of_colors);
+let goal_color = goalColorPicker();
+let default_background_color = "black";
 
 let squares = document.querySelectorAll(".square");
-let goal_color = goalColorPicker();
 let color_display = document.querySelector("#colorDisplay");
 let message_display = document.querySelector("#message");
 let top_container = document.querySelector("#topContainer");
+let replay_button = document.querySelector("#replayButton");
+let easy_button = document.querySelector("#easyButton");
+let hard_button = document.querySelector("#hardButton");
 
-//Applying colors and listener to squares
-for(let i = 0; i < squares.length; i++){
-    //adding initial color to squares
-    squares[i].style.backgroundColor = colors[i];
+setupSquares();
 
-    //adding listeners to squares
-    squares[i].addEventListener("click", colorClicked);
-}
+//Adds resetGame func as listener to button
+replay_button.addEventListener("click", resetGame);
 
+//Adds easyMode func as listener to button
+easy_button.addEventListener("click", easyGame);
+
+//Adds easyMode func as listener to button
+hard_button.addEventListener("click", hardGame);
+
+
+
+//Displays the rgb string in the title for guessing
 color_display.textContent = goal_color;

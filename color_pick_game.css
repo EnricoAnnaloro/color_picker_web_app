@@ -3,19 +3,6 @@ body{
     margin: 0px;
 }
 
-.square{
-    background-color: brown;
-    width: 30%;
-    float: left;
-    padding-bottom: 30%;
-    margin: 1.66%;
-}
-
-#container{
-    max-width: 600px;
-    margin: 0 auto;
-}
-
 #topContainer{
     margin: 0px;
     border: 2px solid white;
@@ -24,7 +11,27 @@ body{
 }
 
 #midContainer{
-    color: white;
+    background-color: white;
+    color: black;
+    height: 30px;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
+#squaresContainer{
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.square{
+    background-color: brown;
+    float: left;
+    width: 30%;
+    padding-bottom: 30%;
+    margin: 1.66%;
+}
+
+.selected{
+    background: blue;
+}
