@@ -1,5 +1,6 @@
 body{
     background-color: black;
+    margin: 0px;
 }
 
 .square{
@@ -16,6 +17,14 @@ body{
 }
 
 #topContainer{
+    margin: 0px;
+    border: 2px solid white;
     color: white;
     text-align: center;
 }
+
+#midContainer{
+    color: white;
+    text-align: center;
+}
+
