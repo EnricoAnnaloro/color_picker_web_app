@@ -78,10 +78,10 @@ function resetGame(){
 
     setupSquares();
 
-    //Displays the rgb string in the title for guessing
+    //Displays resets
     color_display.textContent = goal_color;
-
-    //reset background color to default
+    replay_button.textContent = "NEW COLORS"
+    message_display.textContent = "";
     top_container.style.backgroundColor = "steelblue";
 }
 
