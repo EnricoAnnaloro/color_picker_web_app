@@ -69,7 +69,7 @@ function colorCorrect(){
 function colorIncorrect(square){
     //Function called when correct square is selected
     message_display.textContent = "Try Again";
-    square.style.backgroundColor = default_background_color;
+    square.style.backgroundColor = "#222831";
 }
 
 function resetGame(){
@@ -82,7 +82,7 @@ function resetGame(){
     color_display.textContent = goal_color;
 
     //reset background color to default
-    top_container.style.backgroundColor = default_background_color;
+    top_container.style.backgroundColor = "steelblue";
 }
 
 function easyGame(){
@@ -107,7 +107,6 @@ function hardGame(){
 let num_of_colors = 6;
 let colors = generateColors(num_of_colors);
 let goal_color = goalColorPicker();
-let default_background_color = "black";
 
 let squares = document.querySelectorAll(".square");
 let color_display = document.querySelector("#colorDisplay");
